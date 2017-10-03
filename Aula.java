@@ -26,7 +26,7 @@ public class Aula {
                         continue;
                     case "B":
                     case "b":
-                        Kysymys.pelaa();
+                        Kysymys1.pelaa();
                         continue;
                     case "C":
                     case "c":
