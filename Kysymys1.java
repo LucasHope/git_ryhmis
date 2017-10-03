@@ -3,7 +3,6 @@ import java.util.List;
 
 public class Kysymys1 {
 
-
     String kysymysteksti;
     List<String> vastausvaihtoehdot = new ArrayList<>();
     int oikeanVaihtoehdonIndeksi;

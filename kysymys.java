@@ -3,11 +3,7 @@ import java.util.*;
 //Minna, Kalle ja Katja Ryhmä "Kissalla on neljä jalkaa"
 public class kysymys {
 
-<<<<<<< HEAD
     public static void pelaa () {
-=======
-    public static void main(String[] args) {
->>>>>>> FETCH_HEAD
         Scanner in = new Scanner(System.in);
 
 

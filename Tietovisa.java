@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-
 public class Tietovisa {
 
-<<<<<<< HEAD
     public static void pelaa () {
 
         Kysymys1 k1 = new Kysymys1();
@@ -71,7 +67,6 @@ public class Tietovisa {
         k15.luoKysymys("Miltä tuntui kun sai tietovisan toimimaan?", k15.vastausvaihtoehdot, 0);
 
         Kysymys1 k = new Kysymys1();
-=======
    
         k.kysymysLista.add(k1);
         k.kysymysLista.add(k2);
@@ -97,7 +92,6 @@ public class Tietovisa {
 
     public static class Pelaa {
 
-<<<<<<< HEAD
         public void pelinKulkuYhdella(List<Kysymys1> kysymysLista) {
             Kysymys1 k = new Kysymys1();
             k.kysymysLista = kysymysLista;
@@ -150,9 +144,6 @@ public class Tietovisa {
     }
 
 
-
-
-<<<<<<< HEAD
     public void pelinKulkuKahdella (List <Kysymys1> kysymysLista) {
             Kysymys1 k = new Kysymys1();
 

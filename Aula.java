@@ -1,5 +1,3 @@
-package harjoitukset.git_ryhmis;
-
 import java.util.Scanner;
 
 public class Aula {
@@ -26,7 +24,7 @@ public class Aula {
                         continue;
                     case "B":
                     case "b":
-                        Kysymys1.pelaa();
+                        kysymys.pelaa();
                         continue;
                     case "C":
                     case "c":
