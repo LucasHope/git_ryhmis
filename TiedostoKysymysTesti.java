@@ -1,7 +1,11 @@
+
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,9 +15,35 @@ public class TiedostoKysymysTesti {
 
     static boolean luettu = false;
     static List<TiedostoKysymys> lista = new ArrayList<>();
+    static List<String> rivit = new ArrayList<>();
     private static final String polku = "src/harjoitukset/git_ryhmis/file/kysymykset.txt";
 
     public static void pelaa() {
+
+        Scanner lue = new Scanner(System.in);
+
+        outer:
+        for (;;) {
+            System.out.println("\nHaluatko lisätä Tiedostokysymyksiin lisää kysymyksiä? (k/e)");
+
+            String vastaus = lue.nextLine();
+
+            switch (vastaus) {
+                case "k":
+                case "K":
+                    System.out.println("");
+                    lisaaKysymys();
+                    continue;
+                case "e":
+                case "E":
+                    System.out.println("Aloitetaan siis peli:\n");
+                    break outer;
+                default:
+                    System.out.println("Et siis halunnut lisätä kysymyksiä. Aloitetaan peli:\n");
+                    break outer;
+
+            }
+        }
 
         if (!luettu) {
             lueTiedosto();
@@ -26,10 +56,13 @@ public class TiedostoKysymysTesti {
 
         int kysymyksia;
 
-        Scanner lue = new Scanner(System.in);
-
         System.out.println("Montako kierrosta haluat pelata? (max " + lista.size() + " kierrosta!)");
         kysymyksia = Integer.parseInt(lue.nextLine());
+
+        if (kysymyksia == 0) {
+            System.out.println("Selvä, palaa pian pelaamaan!");
+            return;
+        }
 
         System.out.println("Pelataan siis " + kysymyksia + " kierrosta.\n");
 
@@ -74,7 +107,6 @@ public class TiedostoKysymysTesti {
 
     private static void lueKysymyksetKasin() {
 
-        List<String> rivit = new ArrayList<>();
         rivit.add("Kuka on Academic Workin toimitusjohtaja?,Tommi Teräsvirta,Stefan Heinrichs,Jukka Pulkkinen,1");
         rivit.add("Kuka on Suomen ensimmainen presidentti?,Ståhlberg,Svinhufvud,Relander,0");
         rivit.add("Mita tarkoittaa %d?,String,Liukuluku,Kokonaisluku,2");
@@ -109,5 +141,63 @@ public class TiedostoKysymysTesti {
                     sanat[0], sanat[1], sanat[2], sanat[3], oikea
             ));
         }
+    }
+
+    private static void lisaaKysymys() {
+
+        Scanner luku = new Scanner(System.in);
+
+        System.out.println("Anna haluamasi kysymys:");
+        String kysymys = luku.nextLine();
+
+        System.out.println("Anna haluamasi ensimmäinen vastausvaihtoehto:");
+        String vastaus1 = luku.nextLine();
+        System.out.println("Anna haluamasi toinen vastausvaihtoehto:");
+        String vastaus2 = luku.nextLine();
+        System.out.println("Anna haluamasi kolmas vastausvaihtoehto:");
+        String vastaus3 = luku.nextLine();
+
+        String vastaus4 = null;
+
+        for (;;) {
+
+            System.out.println("Anna oikean vaihtoehdon indeksi (0, 1 tai 2):\n"
+                    + "0 - " + vastaus1 + "\n"
+                    + "1 - " + vastaus2 + "\n"
+                    + "2 - " + vastaus3);
+
+            vastaus4 = luku.nextLine();
+
+            if (Integer.parseInt(vastaus4) == 0
+                    || Integer.parseInt(vastaus4) == 1
+                    || Integer.parseInt(vastaus4) == 2) {
+                break;
+            } else {
+                continue;
+            }
+
+        }
+
+        System.out.println("");
+
+        List<String> apulista = new ArrayList<>();
+        apulista.add(kysymys);
+        apulista.add(vastaus1);
+        apulista.add(vastaus2);
+        apulista.add(vastaus3);
+        apulista.add(vastaus4);
+
+        String rivis = String.join(",", apulista);
+        
+        System.out.println("Lisätty rivi:\n" + rivis);
+
+        try (FileWriter fw = new FileWriter(polku, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter out = new PrintWriter(bw)) {
+            out.println(rivis);
+        } catch (IOException e) {
+            rivit.add(rivis);
+        }
+
     }
 }
