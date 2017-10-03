@@ -20,3 +20,4 @@ Kuka oli Pinocchion isa?,Gepetto,Merlin,Giuseppe,0
 Harry Potterin toinen nimi?,Julius,Jake,James,1
 Christopher Paolinin kirjoittama kirjasarja?,Twilight,Terasrotta,Eragon,2
 Mitka elaimet ovat yksi todennakoinen perusta lohikaarmeen legendalle?,Axolotl,dinosaurukset,Krokotiili,0
+Oletko AI?,Kylla,EI,Ehka...,1

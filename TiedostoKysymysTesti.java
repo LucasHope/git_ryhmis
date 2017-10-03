@@ -36,10 +36,14 @@ public class TiedostoKysymysTesti {
                     continue;
                 case "e":
                 case "E":
-                    System.out.println("Aloitetaan siis peli:\n");
+                    System.out.println("Aloitetaan siis peli:\n"
+                            + "(Press Enter to continue)\n");
+                    lue.nextLine();
                     break outer;
                 default:
-                    System.out.println("Et siis halunnut lisätä kysymyksiä. Aloitetaan peli:\n");
+                    System.out.println("Et siis halunnut lisätä kysymyksiä. Aloitetaan peli:\n"
+                            + "(Press Enter to continue)\n");
+                    lue.nextLine();
                     break outer;
 
             }
@@ -60,7 +64,7 @@ public class TiedostoKysymysTesti {
         kysymyksia = Integer.parseInt(lue.nextLine());
 
         if (kysymyksia == 0) {
-            System.out.println("Selvä, palaa pian pelaamaan!");
+            System.out.println("Selvä, palaa pian pelaamaan!\n");
             return;
         }
 
@@ -194,7 +198,7 @@ public class TiedostoKysymysTesti {
         try (FileWriter fw = new FileWriter(polku, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter out = new PrintWriter(bw)) {
-            out.println(rivis);
+            out.println("" + rivis);
         } catch (IOException e) {
             rivit.add(rivis);
         }
