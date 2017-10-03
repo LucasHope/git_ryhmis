@@ -6,7 +6,6 @@ public class Kysymys1 {
     String kysymysteksti;
     List<String> vastausvaihtoehdot = new ArrayList<>();
     int oikeanVaihtoehdonIndeksi;
-    List<Kysymys1> kysymysLista = new ArrayList<>();
 
     public Kysymys1() {
 
